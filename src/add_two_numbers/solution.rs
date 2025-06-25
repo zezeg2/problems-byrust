@@ -1,3 +1,5 @@
+use crate::Solution;
+
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
@@ -10,7 +12,6 @@ impl ListNode {
         ListNode { next: None, val }
     }
 }
-struct Solution;
 
 fn collect(node: ListNode) -> Vec<i32> {
     let mut result = Vec::new();
