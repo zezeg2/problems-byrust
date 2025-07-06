@@ -4,7 +4,7 @@ use std::rc::Rc;
 use crate::dfs::TreeNode;
 
 impl Solution {
-    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
+    pub fn path_sum_ii(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
         fn search (root: Option<Rc<RefCell<TreeNode>>>, path_vec: &mut Vec<i32>, target_sum: i32, result: &mut Vec<Vec<i32>>) {
             if let Some(node) = root {
                 let node = node.borrow();
@@ -67,7 +67,7 @@ mod tests {
         let root = build_example_tree();
         let target_sum = 22;
 
-        let mut result = Solution::path_sum(root, target_sum);
+        let mut result = Solution::path_sum_ii(root, target_sum);
         let mut expected = vec![
             vec![5, 4, 11, 2],
             vec![5, 8, 4, 5],

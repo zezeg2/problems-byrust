@@ -8,6 +8,11 @@ mod path_sum;
 mod path_sum_2;
 mod symmetric_tree;
 mod flatten_binarytree_to_linkedlist;
+mod max_min_depth;
+mod course_schedule;
+mod binary_tree_maximum_path_sum;
+mod course_schedule_2;
+mod path_sum_3;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
