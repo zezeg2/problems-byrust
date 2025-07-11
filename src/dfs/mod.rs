@@ -13,6 +13,7 @@ mod course_schedule;
 mod binary_tree_maximum_path_sum;
 mod course_schedule_2;
 mod path_sum_3;
+mod kth_smallest_element_in_a_bst;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

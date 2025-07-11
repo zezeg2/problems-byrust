@@ -1,19 +1,19 @@
-impl Solution {
-    pub fn path_sum_iii_2(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
-        let mut solver = Solver2::new(target_sum);
-        let mut path = vec![];
-        solver.dfs_stack(root, &mut path);
-        solver.count
-    }
-}
-
 use crate::Solution;
+
 use crate::dfs::TreeNode;
 use std::cell::{Ref, RefCell};
 use std::rc::Rc;
 impl Solution {
     pub fn path_sum_iii(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
         Solver::new(root, target_sum).solve()
+    }
+}
+impl Solution {
+    pub fn path_sum_iii_2(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> i32 {
+        let mut solver = Solver2::new(target_sum);
+        let mut path = vec![];
+        solver.dfs_stack(root, &mut path);
+        solver.count
     }
 }
 
