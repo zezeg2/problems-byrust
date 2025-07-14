@@ -45,7 +45,7 @@ impl Solution {
 
 #[cfg(test)]
 mod test {
-    use super::Solution;
+    use crate::Solution;
     #[test]
     fn test_case() {
         let result = Solution::convert("PAYPALISHIRING".to_string(), 4);

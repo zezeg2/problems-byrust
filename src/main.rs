@@ -1,8 +1,6 @@
-mod add_two_numbers;
-mod longest_substring_without_repeating_characters;
-mod longest_palindromic_substring;
-mod zigzag_conversion;
 mod dfs;
+mod dynamic_programming;
+mod etc;
 
 struct Solution;
 

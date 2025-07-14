@@ -21,7 +21,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use super::Solution;
+    use crate::Solution;
 
     #[test]
     fn test_single_space() {
