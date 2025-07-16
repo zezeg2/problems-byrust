@@ -2,3 +2,8 @@ mod unique_path;
 mod unique_path_ii;
 mod find_all_possible_stable_binaray_array;
 mod minimum_number_of_valid_string_to_form_target_1;
+mod minimum_number_of_operations_to_make_x_and_y_equal;
+mod sum_of_distances_in_tree;
+mod unique_binary_search_tree;
+mod best_time_to_buy_and_sell_stock_ii;
+mod best_time_to_buy_and_sell_stock_iii;

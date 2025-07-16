@@ -1,71 +1,64 @@
 use crate::Solution;
-
-
-// 알파벳 소문자만 가정 (26개)
 const ALPHABET_SIZE: usize = 26;
 
-// 트라이 노드 정의
 #[derive(Default)]
 struct TrieNode {
     children: [Option<Box<TrieNode>>; ALPHABET_SIZE],
-    // is_end_of_word 플래그는 이 문제에서 필요 없음
 }
 
-// 트라이 자료구조 정의
 #[derive(Default)]
 struct Trie {
     root: TrieNode,
 }
 
 impl Trie {
-    // 트라이에 단어 삽입
     fn insert(&mut self, word: &str) {
         let mut node = &mut self.root;
-        for ch in word.chars().rev() {           // ← 역순으로 삽입
-            let idx = (ch as u8 - b'a') as usize;
-            node = node.children[idx].get_or_insert_with(Default::default);
+        for ch in word.as_bytes() {
+            let idx = (ch - b'a') as usize;
+            node = node.children[idx].get_or_insert_with(|| Box::new(TrieNode::default()));
         }
     }
 }
 
 impl Solution {
-
-    pub fn min_valid_strings_trie(words: Vec<String>, target: String) -> i32 {
+    pub fn min_valid_strings(words: Vec<String>, target: String) -> i32 {
         let n = target.len();
-
-        // 1. 트라이 생성 및 words 삽입
         let mut trie = Trie::default();
+
+        // 1. Trie에 words의 단어를 정방향으로 삽입
         for word in &words {
             trie.insert(word);
         }
 
+        // 2. DP 배열 초기화
         let mut dp = vec![i32::MAX; n + 1];
         dp[0] = 0;
         let target_bytes = target.as_bytes();
 
-        for i in 1..=n {
+        // 3. target을 왼쪽에서 오른쪽으로 채움
+        for i in 0..n {
+            if dp[i] == i32::MAX {
+                continue;
+            }
             let mut current_node = &trie.root;
-            // 2. target의 끝(i-1)에서부터 거꾸로 탐색하며 유효한 접두사 찾기
-            for j in (0..i).rev() { // j = i-1, i-2, ..., 0
+            for j in i..n {
                 let char_index = (target_bytes[j] - b'a') as usize;
-
-                if let Some(next_node) = &current_node.children[char_index] {
+                if let Some(next_node) = current_node.children[char_index].as_ref() {
                     current_node = next_node;
-                    // target[j..i]가 유효한 접두사인 경우
-                    if dp[j] != i32::MAX {
-                        dp[i] = dp[i].min(dp[j] + 1);
-                    }
+                    dp[j + 1] = dp[j + 1].min(dp[i] + 1);
                 } else {
-                    // 트라이 경로가 끊기면 더 이상 유효한 접두사가 없음
                     break;
                 }
             }
         }
 
+        // 4. 결과 반환
         if dp[n] == i32::MAX { -1 } else { dp[n] }
     }
 
-    pub fn min_valid_strings(words: Vec<String>, target: String) -> i32 {
+
+    pub fn min_valid_strings_timeout(words: Vec<String>, target: String) -> i32 {
         let n = target.len();
         // dp[i]는 target의 첫 i개 문자를 만드는 최소 비용
         let mut dp = vec![i32::MAX; n + 1];
