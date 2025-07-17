@@ -45,6 +45,6 @@ mod test {
 
     #[test]
     fn case1() {
-        assert_eq!(Solution::max_profit_iii(vec![3, 3, 5, 0, 0, 3, 1, 4]), 6);
+        assert_eq!(Solution::max_profit_iii_an(vec![3, 3, 5, 0, 0, 3, 1, 4]), 6);
     }
 }

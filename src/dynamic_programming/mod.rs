@@ -7,3 +7,5 @@ mod sum_of_distances_in_tree;
 mod unique_binary_search_tree;
 mod best_time_to_buy_and_sell_stock_ii;
 mod best_time_to_buy_and_sell_stock_iii;
+mod rotate_function;
+mod predict_the_winner;
