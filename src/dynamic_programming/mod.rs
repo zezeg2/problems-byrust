@@ -9,3 +9,5 @@ mod best_time_to_buy_and_sell_stock_ii;
 mod best_time_to_buy_and_sell_stock_iii;
 mod rotate_function;
 mod predict_the_winner;
+mod arithmatic_slices;
+mod coin_changes_ii;
